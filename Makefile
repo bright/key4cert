@@ -1,5 +1,5 @@
 TARGET    = key4cert
-VERSION   = v0.1
+VERSION   = v0.1.1
 REV       = $(shell git rev-parse --short HEAD || cat git-rev)
 
 DEBUG     = -g
@@ -11,7 +11,7 @@ DEFINES  += -DK4C_REV=\"$(REV)\"
 endif
 
 
-CFLAGS    = -pipe -std=c99 -Wall -pedantic $(DEBUG) $(DEFINES)
+CFLAGS    = -pipe -std=c99 -Wall -pedantic $(DEBUG) $(DEFINES) -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib
 SRC_FILES = $(wildcard *.m)
 O_FILES   = $(SRC_FILES:%.c=%.o)
 LIBS      = -framework Foundation -framework Security -framework CoreFoundation -lcrypto
